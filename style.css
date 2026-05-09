@@ -495,8 +495,8 @@ transform:scale(1.05);
     height: 100vh;
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 3px;
-    margin-right: 3px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .auth-container {
