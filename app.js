@@ -473,6 +473,43 @@ authButton.addEventListener("click", async () => {
     }
 });
 
+function openSection(sectionName) {
+
+    // hide all sections
+    document.querySelectorAll(".section").forEach(sec => {
+        sec.classList.remove("active");
+    });
+
+    // show target section
+    const target = document.querySelector(".section." + sectionName);
+    if (target) {
+        target.classList.add("active");
+    }
+
+    // optional: update sidebar active state
+    document.querySelectorAll(".sidebar li").forEach(li => {
+        li.classList.remove("active");
+    });
+}
+
+function openInvites() {
+    openSection("referrals");
+}
+
+function openPayoutHistory() {
+    openSection("payoutHistory");
+}
+
+document.querySelectorAll(".sidebar li")[0]
+    .addEventListener("click", openInvites);
+
+document.querySelectorAll(".sidebar li")[1]
+    .addEventListener("click", openPayoutHistory);
+
+
+    window.openInvites = openInvites;
+window.openPayoutHistory = openPayoutHistory;
+
 function loadReferrals(userId) {
 
     if (!userId) {
