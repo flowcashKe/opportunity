@@ -552,7 +552,13 @@ function loadReferrals(userId) {
     });
 }
 
+window.addEventListener("load", () => {
+    history.pushState({ page: "app" }, "", "#app");
+});
 
+window.addEventListener("popstate", () => {
+    location.reload();
+});
 
 function requestWithdraw(user) {
 
