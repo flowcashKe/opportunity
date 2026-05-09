@@ -61,8 +61,9 @@ auth.onAuthStateChanged(async (user) => {
         loadUserData(user.uid);
         loadReferrals(user.uid);
         loadWithdrawals(user.uid);
-        listenReferralCode(user.uid);
+      
         listenUsedNumbers();
+        listenInviteCodePopup(user.uid);
 
         database.ref("users/" + user.uid).on("value", snap => {
             const data = snap.val();
@@ -727,68 +728,44 @@ function clearUI() {
     if (codeInput) codeInput.value = "";
 }
 
-function listenReferralCode(uid) {
+function listenInviteCodePopup(uid) {
+
+    if (!uid) return;
 
     const userRef = database.ref("users/" + uid);
 
-    userRef.on("value", snapshot => {
+    userRef.on("value", (snapshot) => {
 
         const data = snapshot.val();
-        if (!data) return;
 
-        const code = data.ref || "NO-CODE";
-        const isSubscribed = data.isSubscribed === true;
+        const input = document.getElementById("inviteCodeInput");
+        const getBtn = document.getElementById("getCodeBtnPopup");
 
-        const cardCode = document.getElementById("earnCardCode");
-        const cardBtn = document.querySelector(".card-btn");
-        const cardStatus = document.querySelector(".card-status");
+        if (!input || !getBtn) return;
 
-        // =========================
-        // CODE DISPLAY
-        // =========================
-        if (cardCode) {
-            cardCode.innerText = code;
-        }
-
-        if (!cardBtn) return;
+        const isSubscribed = data?.isSubscribed === true;
+        const refCode = data?.ref;
 
         // =========================
-        // BUTTON UI
+        // NOT ACTIVATED
         // =========================
-        if (isSubscribed) {
-            cardBtn.innerText = "Activated";
-            cardBtn.style.background = "#00c853";
-        } else {
-            cardBtn.innerText = "Activate Now";
-            cardBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
+        if (!isSubscribed || !refCode) {
+
+            input.value = "NOT ACTIVATED";
+
+            getBtn.innerText = "Get Code";
+            getBtn.disabled = false;
+
+            return;
         }
 
         // =========================
-        // CLICK BEHAVIOR (THE FIX 🔥)
+        // ACTIVATED → SHOW REF CODE
         // =========================
-        cardBtn.onclick = function () {
+        input.value = refCode;   // 🔥 THIS is what you wanted
 
-            const user = auth.currentUser;
-
-            if (!user) {
-                alert("Please login first");
-                return;
-            }
-
-            if (isSubscribed) {
-                showCardToast("Already Activated ✅"); // 🔥 show toast
-            } else {
-                openMpesa(); // 🔥 open mpesa
-            }
-        };
-
-        // =========================
-        // STATUS TEXT
-        // =========================
-        if (cardStatus) {
-            cardStatus.innerText = isSubscribed ? "Activated" : "Not Activated";
-            cardStatus.style.color = isSubscribed ? "#00ffaa" : "#ff0050";
-        }
+        getBtn.innerText = "Activated";
+        getBtn.disabled = true;
     });
 }
 
@@ -1012,23 +989,9 @@ function generateRefCode() {
     return code;
 }
 
-// simulate user state
-let isActivated = false; // 🔥 FOR NOW: NOT ACTIVATED
 
 function openInvitePopup() {
-    const popup = document.getElementById("invitePopup");
-    const input = document.getElementById("inviteCodeInput");
-    const getBtn = document.getElementById("getCodeBtnPopup");
-
-    popup.style.display = "flex";
-
-    if (isActivated) {
-        input.value = "SAMMY123"; // example code
-        getBtn.style.display = "none";
-    } else {
-        input.value = "NOT ACTIVATED";
-        getBtn.style.display = "block";
-    }
+    document.getElementById("invitePopup").style.display = "flex";
 }
 
 function closeInvitePopup() {
