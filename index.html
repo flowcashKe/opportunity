@@ -346,6 +346,9 @@
   Once one of these numbers completes the payment, then you will be activated.
 </p>
     <button onclick="confirmPaid()">Confirm i have paid</button>
+    <button id="cancel-mpesa-btn" onclick="closeMpesa()">
+  Cancel
+</button>
 
   </div>
 
@@ -378,7 +381,7 @@
 
     <h2>Your Invite Code</h2>
 
-    <input id="inviteCodeInput" type="text" value="NOT ACTIVATED" readonly>
+    <input id="inviteCodeInput" type="text" readonly>
 
     <div class="invite-actions">
       <button id="getCodeBtnPopup" onclick="openMpesa()">Get Code</button>
