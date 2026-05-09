@@ -2077,6 +2077,26 @@ transform:scale(1.05);
     margin-top: 8px;
 }
 
+#cancel-mpesa-btn{
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 14px;
+
+  border: 1px solid #d1d5db;
+  background: rgb(188, 188, 188);
+  color: #111827;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#cancel-mpesa-btn:hover{
+  background: #f3f4f6;
+}
 
 /* =========================
    ANIMATION
