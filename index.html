@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<title>FlowCash KE</title>
+
+
+</head>
+
+<body>
+<section class="agreement-section" id="agreementSection">
+
+  <div class="agreement-card">
+    
+    <h2>User Agreement</h2>
+
+    <div class="agreement-content">
+      <p>Welcome to FlowCash KE.</p>
+
+      <p>
+        By creating an account, you agree to:
+      </p>
+
+      <ul>
+        <li>Provide accurate information</li>
+        <li>Use the platform fairly</li>
+        <li>Not abuse the referral system</li>
+        <li>Accept that earnings depend on referrals</li>
+      </ul>
+
+      <p>
+        We reserve the right to suspend accounts involved in fraud or abuse.
+      </p>
+    </div>
+
+    <button class="btn primary" onclick="closeAgreement()">I Understand</button>
+
+  </div>
+
+</section>
+
+
+<section class="agreement-section" id="agreementSection">
+
+  <div class="agreement-card">
+    
+    <h2>Start Earning</h2>
+    <div class="agreement-content">
+      <p>Welcome to FlowCash KE.</p>
+      <p>
+        By creating an account, you agree to:
+      </p>
+      <ul>
+        <li>Get you invite code for ONLY ksh 200.</li>
+        <li>Then alway get ksh 100, for every friend you invite.</li>
+        <li>Recover your ksh 200 and continue earning afterwards.</li>
+      <p>
+        NB: all unwithdrawn weekly eanings are paid in full every Wednessday.
+      </p>
+      </ul>
+
+      <p>
+        Act first before your friend get invited.
+      </p>
+    </div>
+
+    <button class="btn primary" onclick="openMpesa()">Continue</button>
+    <button class="btn primary" onclick="closeAgreement()">Cancle</button>
+
+  </div>
+
+</section>
+
+
+<section class="login" style="display: none;">
+
+  <div class="login-card">
+            <div class="badge">🚀 You're 1 step closer</div>
+
+<!-- LOGIN FORM -->
+<form id="loginForm" class="form active">
+              <h1>Login Now</h1>
+            <div class="sub">Join now — you're <span class="highlight">1 step closer to something big</span>.</div>
+
+  <input id="login_email" type="text" placeholder="Phone Number">
+  <input id="login_password" type="password" placeholder="Password">
+
+  <button type="submit" class="btn primary">Login</button>
+  <p class="switch-text">
+  Don’t have an account? 
+  <span onclick="switchAuth('signup')">Create Account</span>
+</p>
+  <p class="form-note" style="font-style: italic;">“Learn. Improve. Repeat.”</p>
+</form>
+
+<!-- SIGNUP FORM -->
+<form id="registerForm" class="form">
+              <h1>Create Account</h1>
+            <div class="sub">Join now — you're <span class="highlight">1 step closer to something big</span>.</div>
+
+  <input id="reg_name" type="text" placeholder="Full Name">
+  <input id="reg_email" type="text" placeholder="Phone Number">
+  <input id="reg_password" type="password" placeholder="Password">
+
+<label for="reg_referral">
+  Invite Code 
+  <a href="https://earnreaf.github.io/opportunity/help.html" class="help-link">
+  Where do I get this?
+</a>
+
+</label>
+
+<input id="reg_referral" type="text" placeholder="Enter Invite code">
+
+
+  <div class="agreement-box">
+    <label>
+      <input type="checkbox" id="signupAgree">
+      I agree to the 
+      <span class="agreement-link" onclick="openAgreement()">User Agreement</span>
+    </label>
+  </div>
+
+  <button type="submit" class="btn primary">Create Account</button>
+  <p class="switch-text">
+  Already have an account? 
+  <span onclick="switchAuth('login')">Login</span>
+</p>
+</form>
+
+  </div>
+</section>
+
+
+<section class="home"  style="display: none;">
+
+    <!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/254119221690" target="_blank" class="whatsapp-float">
+    <svg viewBox="0 0 32 32" width="24" height="24">
+        <path fill="white" d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.43-.48.14-.16.18-.28.27-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.83-2.02-.22-.52-.44-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.98 2.67 1.12 2.85.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.55.58.65.21 1.25.18 1.72.11.52-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.2-.52-.34z"/>
+        <path fill="white" d="M26.67 5.33C23.56 2.22 19.42.5 15 .5 6.99.5.5 6.99.5 15c0 2.65.69 5.2 2 7.45L.5 31.5l9.25-2.43c2.16 1.18 4.61 1.8 7.12 1.8h.01c8.01 0 14.5-6.49 14.5-14.5 0-4.42-1.72-8.56-4.71-11.54zM15 28c-2.32 0-4.59-.62-6.57-1.8l-.47-.28-5.49 1.44 1.46-5.35-.31-.49C2.51 19.41 2 17.23 2 15 2 7.83 7.83 2 15 2c3.46 0 6.71 1.35 9.16 3.79C26.65 8.29 28 11.54 28 15c0 7.17-5.83 13-13 13z"/>
+    </svg>
+</a>
+<style>
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-decoration: none;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+</style>
+
+<div class="topbar">Referral App</div>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 onclick="location.reload()">FlowCash KE</h2>
+        <ul>
+            <li>Invites</li>
+            <li>Payout History</li>
+            <button id="authButton" class="auth-btn-small">Logout</button>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+<div class="main">
+
+
+    <!-- ALWAYS VISIBLE -->
+<div class="account">
+    <h3 id="username">Account: @</h3>
+    <h3 id="totaleanings">Total Earnings</h3>
+    <div class="balance" id="balance">Balance: KSH 0</div>
+
+    
+
+    <!-- 🔥 AUTH BUTTON -->
+<div class="auth-btn-row">
+
+
+<!-- LEFT: REF CODE -->
+<div class="code-mini" id="codeMini">
+    <button id="getCodeBtn" onclick="openInvitePopup()">
+        Invite a Friend
+    </button>
+
+</div>
+
+    <button class="withdraw-btn">Withdraw</button>
+</div>
+</div>
+
+    <!-- SWITCHING CONTENT -->
+
+<!-- Referrals -->
+<div class="section referrals active">
+    <h3>Your Invites</h3>
+
+<table class="payout-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody id="referralsBody"></tbody>
+</table>
+</div>
+
+
+<!-- Payouts -->
+<div class="section payoutHistory">
+    <h3>Payout History</h3>
+
+<table class="payout-table">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Phone</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="payoutBody"></tbody>
+</table>
+</div>
+
+</div>
+
+
+</div>
+    <footer class="footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col">
+      <h2 class="footer-logo">🔥FlowCash KE</h2>
+      <p class="footer-text">
+        A simple referral platform designed to help you earn by sharing value.
+        Learn, grow, and build income with no limits.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+<li><a href="#" onclick="event.preventDefault(); showSection('dashboard')">Dashboard</a></li>
+<li><a href="#" onclick="event.preventDefault(); showSection('referrals')">Referrals</a></li>
+<li><a href="#" onclick="event.preventDefault(); showSection('payoutHistory')">Payouts</a></li>
+      </ul>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="footer-col">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#" onclick="openAgreement()">User Agreement</a></li>
+        <li><a href="https://wa.me/254119221690">Help Center</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- TRUST / INFO -->
+    <div class="footer-col">
+      <h3>Info</h3>
+      <p class="footer-text">
+        Payments are processed via M-Pesa.<br>
+        Earnings depend on successful invites.<br>
+        No hidden fees.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    © 2026 FlowCash KE. All rights reserved.
+  </div>
+</footer>
+</section>
+
+<!-- =========================
+     M-PESA PAYMENT POPUP
+========================= -->
+<div class="mpesa-popup" id="mpesaPopup" style="display: none;">
+
+  <div class="popup mpesa-card">
+
+    <div class="title">Lipa na M-Pesa</div>
+    <div class="subtitle">You're ONLY one step away.</div>
+
+    <div class="step">
+      1. Pay
+      <div class="pay-box">
+        <div class="amount">Ksh 200</div>
+        <div class="till">
+          Buy goods & services till<br><b>3194361</b>
+        </div>
+        <div class="copy" onclick="navigator.clipboard.writeText('3194361')">
+          Copy
+        </div>
+        <div class="business">BLOOMTASKER NET</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <input id="mpesaPhone" type="tel" placeholder="Enter Mpesa number used to pay">
+    </div>
+    <div id="usedNumbersList" class="used-numbers"></div>
+    <p class="payment-warning">
+  This is where all the numbers you used to attempt payment will be listed. 
+  Once one of these numbers completes the payment, then you will be activated.
+</p>
+    <button onclick="confirmPaid()">Confirm i have paid</button>
+
+  </div>
+
+</div>
+
+
+<div class="reaf-loader">
+
+    <div class="loader-container">
+
+        <div class="title">FlowCash KE</div>
+        <div class="subtitle">Loading</div>
+
+        <div class="spinner"></div>
+
+        <div class="loading-text">
+            Please wait<span class="dots"></span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     INVITE CODE POPUP
+========================= -->
+<div class="invite-popup" id="invitePopup">
+
+  <div class="invite-card">
+
+    <h2>Your Invite Code</h2>
+
+    <input id="inviteCodeInput" type="text" value="NOT ACTIVATED" readonly>
+
+    <div class="invite-actions">
+      <button id="getCodeBtnPopup" onclick="openMpesa()">Get Code</button>
+
+      <button onclick="copyInviteCode()">Copy</button>
+    </div>
+
+    <button class="cancel-btn" onclick="closeInvitePopup()">Cancel</button>
+
+  </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- FIREBASE SDKs -->
+<!-- ===================================================== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<!-- Your JS -->
+<script src="app.js"></script>
+
+</body>
+</html>
