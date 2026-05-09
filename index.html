@@ -216,7 +216,12 @@
 
 <!-- Referrals -->
 <div class="section referrals active">
-    <h3>Your Invites</h3>
+  <div id="toptable">
+   
+    <h3 onclick="openInvites()" id="meselected">Your Invites</h3>
+     <h3 onclick="openPayoutHistory()">Payout History</h3>
+  </div>
+
 
 <table class="payout-table">
     <thead>
@@ -234,7 +239,12 @@
 
 <!-- Payouts -->
 <div class="section payoutHistory">
-    <h3>Payout History</h3>
+    <div id="toptable">
+        <h3 onclick="openInvites()">Your Invites</h3>
+      <h3 onclick="openPayoutHistory()" id="meselected">Payout History</h3>
+      
+    </div>
+
 
 <table class="payout-table">
     <thead>
