@@ -1036,23 +1036,40 @@ function payNow() {
             uid: user.uid
         })
     })
-    .then(res => res.json())
-    .then(data => {
+    .then(async res => {
 
-        if (data.success) {
+        console.log("STATUS:", res.status);
 
-            window.location.href = data.link;
+        const text = await res.text();
 
-        } else {
+        console.log("RESPONSE:", text);
 
-            alert("Failed");
+        try {
+
+            const data = JSON.parse(text);
+
+            if (data.success) {
+
+                window.location.href = data.link;
+
+            } else {
+
+                alert("Failed");
+
+            }
+
+        } catch(e) {
+
+            console.log("JSON ERROR:", e);
+            alert(text);
 
         }
 
     })
     .catch(err => {
 
-        console.log(err);
+        console.log("FULL ERROR:", err);
+
         alert("Server error");
 
     });
