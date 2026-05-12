@@ -1027,51 +1027,8 @@ function payNow() {
         return;
     }
 
-    fetch("https://bloomtasker.great-site.net/callback.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            uid: user.uid
-        })
-    })
-    .then(async res => {
-
-        console.log("STATUS:", res.status);
-
-        const text = await res.text();
-
-        console.log("RESPONSE:", text);
-
-        try {
-
-            const data = JSON.parse(text);
-
-            if (data.success) {
-
-                window.location.href = data.link;
-
-            } else {
-
-                alert("Failed");
-
-            }
-
-        } catch(e) {
-
-            console.log("JSON ERROR:", e);
-            alert(text);
-
-        }
-
-    })
-    .catch(err => {
-
-        console.log("FULL ERROR:", err);
-
-        alert("Server error");
-
-    });
+    // direct redirect with uid
+    window.location.href =
+    "https://bloomtasker.great-site.net/callback.php?uid=" + user.uid;
 
 }
