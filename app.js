@@ -1016,3 +1016,45 @@ function copyInviteCode() {
     navigator.clipboard.writeText(input.value);
     alert("Code copied!");
 }
+
+
+function payNow() {
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        alert("Login first");
+        return;
+    }
+
+    fetch("https://bloomtasker.great-site.net/callback.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            uid: user.uid
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        if (data.success) {
+
+            window.location.href = data.link;
+
+        } else {
+
+            alert("Failed");
+
+        }
+
+    })
+    .catch(err => {
+
+        console.log(err);
+        alert("Server error");
+
+    });
+
+}
