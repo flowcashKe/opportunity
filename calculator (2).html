@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WriteHub - Online Writing Jobs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 6%;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .nav-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 70px 6% 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: #6b7280;
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+    }
+
+    .primary-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: #1e4fd8;
+    }
+
+    .secondary-btn {
+      background: white;
+      border: 1px solid #d1d5db;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 20px 6% 50px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .stat-card h2 {
+      color: #2563eb;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      padding: 0 6%;
+      margin-top: 20px;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 6% 70px;
+    }
+
+    .job-card {
+      background: white;
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .job-tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #2563eb;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .job-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .job-card p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .job-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    .apply-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 14px;
+      background: #111827;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .features {
+      padding: 20px 6% 70px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .footer {
+      background: #111827;
+      color: white;
+      padding: 40px 6%;
+      text-align: center;
+    }
+
+    .footer p {
+      color: #9ca3af;
+      margin-top: 10px;
+    }
+
+
+/* LOGIN SECTION */
+
+#login-section{
+  min-height:100vh;
+  background:#0f172a;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* GLOW */
+
+.glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(100px);
+}
+
+.glow-1{
+  width:280px;
+  height:280px;
+  background:#2563eb;
+  opacity:0.20;
+  top:-80px;
+  left:-80px;
+}
+
+.glow-2{
+  width:240px;
+  height:240px;
+  background:#7c3aed;
+  opacity:0.15;
+  bottom:-70px;
+  right:-70px;
+}
+
+/* WRAPPER */
+
+.login-wrapper{
+  width:100%;
+  max-width:980px;
+  margin:auto;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  border-radius:28px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  position:relative;
+  z-index:5;
+}
+
+/* LEFT */
+
+.login-left{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  padding:45px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.trust-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.12);
+  padding:10px 15px;
+  border-radius:999px;
+  font-size:0.85rem;
+  font-weight:600;
+  width:max-content;
+  margin-bottom:25px;
+}
+
+.login-left h1{
+  font-size:2.4rem;
+  line-height:1.1;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.login-left p{
+  color:rgba(255,255,255,0.85);
+  line-height:1.7;
+  font-size:1rem;
+  max-width:400px;
+}
+
+/* MINI STATS */
+
+.stats-box{
+  display:flex;
+  gap:14px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.mini-stat{
+  background:rgba(255,255,255,0.10);
+  padding:16px;
+  border-radius:18px;
+  min-width:120px;
+}
+
+.mini-stat h2{
+  font-size:1.3rem;
+  margin-bottom:4px;
+}
+
+.mini-stat span{
+  color:rgba(255,255,255,0.75);
+  font-size:0.85rem;
+}
+
+/* RIGHT */
+
+.login-right{
+  background:white;
+  padding:45px 38px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.login-top{
+  margin-bottom:28px;
+}
+
+.login-top h2{
+  font-size:1.9rem;
+  font-weight:800;
+  color:#111827;
+  margin-bottom:10px;
+}
+
+.login-top p{
+  color:#6b7280;
+  line-height:1.6;
+  font-size:0.96rem;
+}
+
+/* GOOGLE BUTTON */
+
+.google-btn{
+  width:100%;
+  height:56px;
+  border-radius:16px;
+  border:1px solid #e5e7eb;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:700;
+  cursor:pointer;
+  margin-bottom:22px;
+}
+
+.google-btn img{
+  width:20px;
+}
+
+/* DIVIDER */
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.divider div{
+  flex:1;
+  height:1px;
+  background:#e5e7eb;
+}
+
+.divider span{
+  color:#9ca3af;
+  font-size:0.85rem;
+  font-weight:700;
+}
+
+/* INPUTS */
+
+.input-group{
+  margin-bottom:16px;
+}
+
+.input-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:700;
+  color:#374151;
+  font-size:0.95rem;
+}
+
+.input-group input{
+  width:100%;
+  height:55px;
+  border-radius:16px;
+  border:1px solid #d1d5db;
+  padding:0 16px;
+  font-size:0.95rem;
+  outline:none;
+}
+
+/* OPTIONS */
+
+.login-options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.login-options label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#6b7280;
+  font-size:0.9rem;
+}
+
+.login-options a{
+  color:#2563eb;
+  text-decoration:none;
+  font-weight:700;
+  font-size:0.9rem;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn{
+  width:100%;
+  height:58px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+  font-size:1rem;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 12px 28px rgba(37,99,235,0.28);
+}
+
+/* FOOT */
+
+.register-text{
+  text-align:center;
+  margin-top:24px;
+  color:#6b7280;
+  line-height:1.6;
+  font-size:0.92rem;
+}
+
+.register-text a{
+  color:#2563eb;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .login-wrapper{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  #login-section{
+    padding:18px;
+  }
+
+  .login-left h1{
+    font-size:2rem;
+  }
+
+  .login-left,
+  .login-right{
+    padding:32px 24px;
+  }
+
+}
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .navbar {
+        padding: 16px 5%;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HOME SECTION -->
+<section id="home-section" style="display: none;">
+
+  <nav class="navbar">
+    <div class="logo">WriteHub</div>
+    <button class="nav-btn" id="authBtn" onclick="handleAuthButton()">
+  Login
+</button>
+  </nav>
+
+  <section class="hero">
+
+    <!-- BALANCE CARD -->
+    <section style="padding: 0 6% 35px;">
+      <div style="
+        background: linear-gradient(135deg,#111827,#1f2937);
+        border-radius: 24px;
+        padding: 24px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        align-items:flex-end;
+        gap:18px;
+      ">
+
+        <div style="flex:1 1 240px; min-width:0; text-align:left;">
+          <p style="
+            color:#9ca3af;
+            font-size:0.88rem;
+            font-weight:500;
+            margin:0 0 8px 0;
+          ">
+            Earnings Balance
+          </p>
+
+          <h1 style="
+            font-size:clamp(1.8rem,6vw,2.5rem);
+            font-weight:800;
+            line-height:1.1;
+            margin:0;
+          ">
+            KSh 24,580
+          </h1>
+        </div>
+
+        <button style="
+          width:100%;
+          max-width:180px;
+          background:#2563eb;
+          color:white;
+          border:none;
+          padding:13px 18px;
+          border-radius:14px;
+          font-weight:700;
+          cursor:pointer;
+        ">
+          Withdraw
+        </button>
+
+      </div>
+    </section>
+
+    <h1>Find Online Writing Jobs & Start Earning</h1>
+
+    <p>
+      Join thousands of writers earning online through article writing,
+      copywriting, blog writing, academic writing and AI editing jobs.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="primary-btn">Get Started</button>
+      <button class="secondary-btn">Browse Jobs</button>
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+
+    <div class="stat-card">
+      <h2>15</h2>
+      <p>Available Bids</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>12K+</h2>
+      <p>Active Writers</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>4.8★</h2>
+      <p>User Rating</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>2,300+</h2>
+      <p>Available Jobs</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>KSh 2.4M</h2>
+      <p>Paid This Month</p>
+    </div>
+
+  </section>
+
+  <!-- JOB TITLE -->
+  <div style="
+    padding: 0 6%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  ">
+
+    <h2 style="
+      font-size:1.8rem;
+      font-weight:800;
+      margin:0;
+    ">
+      Available Jobs
+    </h2>
+
+    <button style="
+      background: linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:white;
+      border:none;
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:700;
+    ">
+      ⚡ <span id="bidCount">15</span> Bids
+    </button>
+
+  </div>
+
+  <!-- JOBS -->
+  <section class="jobs">
+
+    <div class="job-card">
+      <span class="job-tag">Remote</span>
+      <h3>SEO Blog Writer</h3>
+      <p>Write high-quality SEO blog posts for tech websites.</p>
+
+      <div class="job-info">
+        <span>KSh 3,200/article</span>
+        <span>Full Time</span>
+      </div>
+
+      <button class="apply-btn" onclick="applyJob()">
+        Apply Job
+      </button>
+    </div>
+
+    <div class="job-card">
+      <span class="job-tag">Flexible</span>
+      <h3>Academic Writer</h3>
+      <p>Help students with reports and assignments online.</p>
+
+      <div class="job-info">
+        <span>KSh 1,500/page</span>
+        <span>Part Time</span>
+      </div>
+
+      <button class="apply-btn" onclick="applyJob()">
+        Apply Job
+      </button>
+    </div>
+
+  </section>
+
+</section>
+
+
+<!-- AUTH SECTION -->
+<section id="login-section" style="display: none;">
+
+  <!-- GLOW -->
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <div class="login-wrapper">
+
+    <!-- LEFT SIDE (STAYS CONSTANT) -->
+    <div class="login-left">
+
+      <div class="trust-badge">
+        ⚡ Trusted by 12,000+ Writers
+      </div>
+
+      <h1>
+        Build Your Writing Career Online
+      </h1>
+
+      <p>
+        Access premium online writing jobs,
+        manage bids and track your earnings professionally.
+      </p>
+
+      <div class="stats-box">
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- RIGHT SIDE -->
+    <div class="login-right">
+
+      <!-- LOGIN FORM -->
+      <div id="login-form">
+
+        <div class="login-top">
+
+          <h2>Welcome Back</h2>
+
+          <p>
+            Login to continue managing your jobs and earnings.
+          </p>
+
+        </div>
+
+        <button class="google-btn" onclick="googleLogin()">
+
+          <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png">
+
+          Continue with Google
+
+        </button>
+
+
+        <div class="divider">
+
+          <div></div>
+          <span>OR</span>
+          <div></div>
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Email Address</label>
+
+          <input type="email" id="login-email" placeholder="Enter your email">
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+        <input type="password" id="login-password" placeholder="Enter password">
+
+        </div>
+
+        <div class="login-options">
+
+          <label>
+            <input type="checkbox">
+            Keep me logged in
+          </label>
+
+          <a href="#">Forgot Password?</a>
+
+        </div>
+
+        <button class="login-btn" onclick="loginUser()">
+  Login Account
+</button>
+
+        <p class="register-text">
+
+          Don’t have an account?
+
+          <a href="#" onclick="showRegister()">
+            Create Account
+          </a>
+
+        </p>
+
+      </div>
+
+
+
+
+
+      <!-- REGISTER FORM -->
+      <div id="register-form" style="display:none;">
+
+        <div class="login-top">
+
+          <h2>Create Account</h2>
+
+          <p>
+            Start applying for online writing jobs instantly.
+          </p>
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Full Name</label>
+
+          <input type="text" id="register-name" placeholder="Enter full name">
+
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Email Address</label>
+
+          
+<input type="email" id="register-email" placeholder="Enter email">
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+         <input type="password" id="register-password" placeholder="Create password">
+
+        </div>
+
+<button class="login-btn" onclick="registerUser()">
+  Create Account
+</button>
+
+        <p class="register-text">
+
+          Already have an account?
+
+          <a href="#" onclick="showLogin()">
+            Login
+          </a>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FIREBASE SDKs -->
+<!-- ===================================================== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+
+  
+/* ==========================================================
+   FIREBASE CONFIGURATION
+   IMPORTANT:
+   - Restrict API keys in Firebase Console
+   - Set proper Realtime Database Rules
+   - Never expose admin credentials on frontend
+========================================================== */
+document.body.classList.add("loading");
+
+const authButton = document.getElementById("authButton");
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCk65nRivNLguq_Tt8Tl3hea5YfOg44gz8",
+  authDomain: "calculator-85416.firebaseapp.com",
+  databaseURL: "https://calculator-85416-default-rtdb.firebaseio.com",
+  projectId: "calculator-85416",
+  storageBucket: "calculator-85416.firebasestorage.app",
+  messagingSenderId: "288130866574",
+  appId: "1:288130866574:web:98f046172bc05c8dc618df",
+  measurementId: "G-HDQ4B4X21X"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// ✅ ADD THESE LINES
+const auth = firebase.auth();
+const database = firebase.database();
+
+/* ==========================================================
+   PAGE STATE
+========================================================== */
+
+const homeSection = document.getElementById("home-section");
+const loginSection = document.getElementById("login-section");
+
+/* SAVE CURRENT PAGE */
+function savePage(page){
+
+  localStorage.setItem("currentPage", page);
+
+}
+
+/* OPEN SAVED PAGE */
+function openSavedPage(){
+
+  const savedPage = localStorage.getItem("currentPage");
+
+  if(savedPage === "login"){
+
+    homeSection.style.display = "none";
+    loginSection.style.display = "flex";
+
+  }else{
+
+    homeSection.style.display = "block";
+    loginSection.style.display = "none";
+
+  }
+
+}
+
+firebase.auth().onAuthStateChanged((user) => {
+
+  updateAuthButton();
+
+
+});
+
+/* ==========================================================
+   REGISTER USER
+========================================================== */
+function registerUser(){
+
+  const name = document.getElementById("register-name").value.trim();
+
+  const email = document.getElementById("register-email").value.trim();
+
+  const password = document.getElementById("register-password").value;
+
+  if(!name || !email || !password){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+
+  .then((userCredential) => {
+
+    const user = userCredential.user;
+
+    /* SAVE USER DATA */
+    firebase.database().ref("users/" + user.uid).set({
+
+      fullName: name,
+      email: email,
+      bids: 15,
+      balance: 0,
+      joinedAt: Date.now()
+
+    });
+
+    alert("Account created successfully");
+
+    /* SWITCH TO HOME */
+showHome();
+
+  })
+
+  .catch((error) => {
+
+    alert(error.message);
+
+  });
+
+}
+
+
+
+
+
+/* ==========================================================
+   LOGIN USER
+========================================================== */
+function loginUser(){
+
+  const email = document.getElementById("login-email").value.trim();
+
+  const password = document.getElementById("login-password").value;
+
+  if(!email || !password){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+
+  .then((userCredential) => {
+
+    alert("Login successful");
+
+    /* SHOW HOME */
+    document.getElementById("login-section").style.display = "none";
+
+    document.getElementById("home-section").style.display = "block";
+
+  })
+
+  .catch((error) => {
+
+    alert(error.message);
+
+  });
+
+}
+
+/* ==========================================================
+   GOOGLE LOGIN
+========================================================== */
+
+function googleLogin(){
+
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  firebase.auth().signInWithPopup(provider)
+
+  .then((result) => {
+
+    const user = result.user;
+
+    /* SAVE USER IF NEW */
+    firebase.database().ref("users/" + user.uid).once("value")
+
+    .then((snapshot) => {
+
+      if(!snapshot.exists()){
+
+        firebase.database().ref("users/" + user.uid).set({
+
+          fullName: user.displayName || "",
+          email: user.email || "",
+          bids: 15,
+          balance: 0,
+          joinedAt: Date.now()
+
+        });
+
+      }
+
+    });
+
+    alert("Google login successful");
+
+    showHome();
+
+  })
+
+  .catch((error) => {
+
+    alert(error.message);
+
+  });
+
+}
+
+  let bids = 15;
+
+  function applyJob() {
+
+    if (bids > 0) {
+
+      bids--;
+
+      document.getElementById('bidCount').innerText = bids;
+
+      alert('Application submitted successfully.');
+
+    } else {
+
+      alert('You have no bids remaining.');
+
+    }
+
+  }
+
+function showLogin(){
+
+  homeSection.style.display = "none";
+
+  loginSection.style.display = "flex";
+
+  savePage("login");
+
+}
+
+function showRegister(){
+
+  document.getElementById("login-form").style.display = "none";
+
+  document.getElementById("register-form").style.display = "block";
+
+}
+
+function showHome(){
+
+  homeSection.style.display = "block";
+
+  loginSection.style.display = "none";
+
+  savePage("home");
+
+}
+
+/* ==========================================================
+   LOGOUT USER
+========================================================== */
+function logoutUser(){
+
+  firebase.auth().signOut()
+
+  .then(() => {
+
+    /* SHOW LOGIN SCREEN */
+showLogin();
+
+    /* RESET TO LOGIN FORM */
+    showLogin();
+
+    alert("Logged out successfully");
+
+  })
+
+  .catch((error) => {
+
+    alert(error.message);
+
+  });
+
+}
+
+/* ==========================================================
+   HANDLE AUTH BUTTON
+========================================================== */
+function handleAuthButton(){
+
+  const user = firebase.auth().currentUser;
+
+  if(user){
+
+    logoutUser();
+
+  }else{
+
+showLogin();
+
+  }
+
+}
+
+
+
+
+
+/* ==========================================================
+   UPDATE AUTH BUTTON
+========================================================== */
+function updateAuthButton(){
+
+  const authBtn = document.getElementById("authBtn");
+
+  const user = firebase.auth().currentUser;
+
+  if(user){
+
+    authBtn.innerText = "Logout";
+
+  }else{
+
+    authBtn.innerText = "Login";
+
+  }
+
+}
+
+/* ==========================================================
+   INITIAL PAGE LOAD
+========================================================== */
+
+openSavedPage();
+
+</script>
+</body>
+</html>
