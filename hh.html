@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>Pay with M-Pesa</h2>
+<h2 id="status">Waiting for payment...</h2>
 
 <button onclick="pay()">
 Pay Now
@@ -10,12 +10,64 @@ Pay Now
 
 <script>
 
+// Restore saved status
+const saved = localStorage.getItem("payment_status");
+
+if(saved) {
+    document.getElementById("status").innerHTML = saved;
+}
+
 function pay() {
 
-    window.location.href =
-    "https://link.palpluss.com/6aa649f0-b962-451b-8cc6-6edd5377b440";
+    window.open(
+        "https://link.palpluss.com/6aa649f0-b962-451b-8cc6-6edd5377b440",
+        "_blank"
+    );
 
 }
+
+// Check status every 3 sec
+setInterval(() => {
+
+    fetch("https://bloomtasker.great-site.net/check.php")
+
+    .then(r => r.json())
+
+    .then(data => {
+
+        console.log(data);
+
+        if(data.status === "PAID") {
+
+            document.getElementById("status").innerHTML =
+                "✅ Payment Successful";
+
+            localStorage.setItem(
+                "payment_status",
+                "✅ Payment Successful"
+            );
+
+        }
+
+        else if(data.status === "CANCELLED") {
+
+            document.getElementById("status").innerHTML =
+                "❌ Payment Cancelled";
+
+        }
+
+        else if(data.status === "FAILED") {
+
+            document.getElementById("status").innerHTML =
+                "❌ Payment Failed";
+
+        }
+
+    })
+
+    .catch(err => console.log(err));
+
+}, 3000);
 
 </script>
 
