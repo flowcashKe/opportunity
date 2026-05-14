@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="pay()">Pay Now</button>
+
+<h2 id="status">⏳ Pending Payment...</h2>
+
+<script>
+
+function pay() {
+
+    window.open(
+        "https://link.palpluss.com/6aa649f0-b962-451b-8cc6-6edd5377b440",
+        "_blank"
+    );
+
+}
+
+setInterval(() => {
+
+    fetch("https://bloomtasker.great-site.net/check.php")
+    .then(res => res.json())
+    .then(data => {
+
+        if(data.status === "PAID") {
+
+            document.getElementById("status").innerHTML =
+                "✅ Payment Successful";
+
+        }
+
+    })
+    .catch(err => console.log(err));
+
+}, 3000);
+
+</script>
+
+</body>
+</html>
