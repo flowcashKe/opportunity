@@ -6,6 +6,12 @@
 
 <h2 id="status">⏳ Pending Payment...</h2>
 
+<iframe
+    id="checker"
+    src="https://bloomtasker.great-site.net/status.txt"
+    style="display:none;">
+</iframe>
+
 <script>
 
 function pay() {
@@ -19,21 +25,35 @@ function pay() {
 
 setInterval(() => {
 
-    fetch("https://bloomtasker.great-site.net/check.php")
-    .then(response => response.json())
-    .then(data => {
+    const iframe = document.getElementById("checker");
 
-        console.log(data);
+    iframe.src =
+        "https://bloomtasker.great-site.net/status.txt?" +
+        new Date().getTime();
 
-        if(data.status === "PAID") {
+    iframe.onload = function () {
 
-            document.getElementById("status").innerHTML =
-                "✅ Payment Successful";
+        try {
+
+            const text =
+                iframe.contentWindow.document.body.innerText.trim();
+
+            console.log(text);
+
+            if(text === "PAID") {
+
+                document.getElementById("status").innerHTML =
+                    "✅ Payment Successful";
+
+            }
+
+        } catch(e) {
+
+            console.log(e);
 
         }
 
-    })
-    .catch(error => console.log(error));
+    };
 
 }, 3000);
 
