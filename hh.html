@@ -2,60 +2,12 @@
 <html>
 <body>
 
-<button onclick="pay()">Pay Now</button>
-
-<h2 id="status">⏳ Pending Payment...</h2>
-
-<iframe
-    id="checker"
-    src="https://bloomtasker.great-site.net/status.txt"
-    style="display:none;">
-</iframe>
+<h2>Waiting for payment...</h2>
 
 <script>
 
-function pay() {
-
-    window.open(
-        "https://link.palpluss.com/6aa649f0-b962-451b-8cc6-6edd5377b440",
-        "_blank"
-    );
-
-}
-
-setInterval(() => {
-
-    const iframe = document.getElementById("checker");
-
-    iframe.src =
-        "https://bloomtasker.great-site.net/status.txt?" +
-        new Date().getTime();
-
-    iframe.onload = function () {
-
-        try {
-
-            const text =
-                iframe.contentWindow.document.body.innerText.trim();
-
-            console.log(text);
-
-            if(text === "PAID") {
-
-                document.getElementById("status").innerHTML =
-                    "✅ Payment Successful";
-
-            }
-
-        } catch(e) {
-
-            console.log(e);
-
-        }
-
-    };
-
-}, 3000);
+window.location.href =
+"https://link.palpluss.com/6aa649f0-b962-451b-8cc6-6edd5377b440";
 
 </script>
 
